@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Yahtzee</title>
+  </head>
+  <body>
+    <main class="h-full w-full grid grid-cols-page gap-x-2">
+      <section class="pt-8 flex flex-col">
+        <div class="grid grid-cols-3 gap-y-8 justify-items-center">
+          <img src="assets/icons/lock.svg" class="absolute dice1-lock" id="dice1-lock">
+          <div id="dice1" role="button" class="flex items-center justify-center font-bold w-20 h-20 border"></div>
+          <img src="assets/icons/lock.svg" class="absolute dice2-lock" id="dice2-lock">
+          <div id="dice2" role="button" class="flex items-center justify-center font-bold w-20 h-20 border"></div>
+          <img src="assets/icons/lock.svg" class="absolute dice3-lock" id="dice3-lock">
+          <div id="dice3" role="button" class="flex items-center justify-center font-bold w-20 h-20 border"></div>
+          <img src="assets/icons/lock.svg" class="absolute dice4-lock" id="dice4-lock">
+          <div id="dice4" role="button" class="flex items-center justify-center font-bold w-20 h-20 border"></div>
+          <img src="assets/icons/lock.svg" class="absolute dice5-lock" id="dice5-lock">
+          <div id="dice5" role="button" class="flex items-center justify-center font-bold w-20 h-20 border"></div>
+        </div>
+
+        <button id="roll-dices" class="mt-8 bg-blue-500 hover:bg-blue-700 text-white transition focus:outline-none py-2 px-4 rounded self-center">Rollen</button>
+      </section>
+      <section class="h-screen py-8 pr-8">
+        <article class="h-full pt-4 pl-4 border">
+          <h2 class="mb-4 text-xl font-medium">Scoreblok</h2>
+
+          <section class="flex justify-evenly">
+            <div>
+              <h3 class="mb-4 font-medium">Deel 1</h3>
+
+              <table>
+                <tbody>
+                  <tr id="scoreboard-one" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Enen</td>
+                    <td>Tel alle enen</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-two" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Tweeën</td>
+                    <td>Tel alle tweeën</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-three" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Drieën</td>
+                    <td>Tel alle drieën</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-four" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Vieren</td>
+                    <td>Tel alle vieren</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-five" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Vijven</td>
+                    <td>Tel alle vijven</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-six" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Zessen</td>
+                    <td>Tel alle zessen</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-total-points">
+                    <td colspan="2">Totaal aantal punten</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-extra-bonus">
+                    <td>Extra bonus <small>Als punten totaal 63 of meer is</small></td>
+                    <td>35 punten</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-total-1">
+                    <td colspan="2">Totaal deel 1</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <h3 class="font-medium mb-4">Deel 2</h3>
+
+              <table>
+                <tbody>
+                  <tr id="scoreboard-three-of-a-kind" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Three of a kind <small>3 dezelfde</small></td>
+                    <td>Totaal van de stenen</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-four-of-a-kind" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Carré <small>4 dezelfde</small></td>
+                    <td>Totaal van de stenen</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-fullhouse" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Full House <small>3 + 2 dezelfde</small></td>
+                    <td>25 punten</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-small-street" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Kleine straat <small>4 opeenvolgende nummers</small></td>
+                    <td>30</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-big-street" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Grote straat <small>5 opeenvolgende nummers</small></td>
+                    <td>40</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-yahtzee" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Topscore <small>5 dezelfde</small></td>
+                    <td>50</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-chance" class="cursor-pointer	hover:bg-gray-100 transition">
+                    <td>Chance <small>Vrije keuze</small></td>
+                    <td>Totaal van de 5 stenen</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-total-2">
+                    <td colspan="2">Totaal deel 2</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                  <tr id="scoreboard-grand-total">
+                    <td colspan="2">Totaal Generaal</td>
+                    <td class="w-12 value"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

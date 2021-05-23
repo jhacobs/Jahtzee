@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table {
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+}
+
+.dice1-lock {
+  left: 6.8rem;
+  top: 6rem;
+}
+
+.dice2-lock {
+  top: 6rem;
+  left: 17.5rem;
+}
+
+.dice3-lock {
+  top: 6rem;
+  left: 28rem;
+}
+
+.dice4-lock {
+  left: 6.8rem;
+  top: 13rem;
+}
+
+.dice5-lock {
+  top: 13rem;
+  left: 17.5rem;
+}
